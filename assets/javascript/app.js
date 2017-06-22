@@ -17,7 +17,7 @@ addButtons();
 
 //Making call to server
 var runAjax = function(link) {
-	$(".images").empty();
+    $(".images").empty();
 
     $.ajax({ url: link, method: "GET" })
         .done(function(response) {
@@ -32,12 +32,12 @@ var runAjax = function(link) {
                 var image = $("<img>");
                 image.attr({
                     src: response.data[i].images.fixed_height.url
-              		
-              });
+
+                });
 
                 $(".images").append(image);
 
-                
+
             };
         });
 };
@@ -50,21 +50,21 @@ var runAjax = function(link) {
 //Grab user value and add buttons
 $("#search").on("click", function() {
 
-    //Deleting the existing arrays in DOM	
+    //Deleting the existing arrays in DOM   
     $(".buttonsContainer").empty();
     var userVal = $("#search-value").val();
 
     //Only add to the button when the input is not empty
     if (userVal !== "") {
         buttons.push(userVal);
-    
-
-    var link = "http://api.giphy.com/v1/gifs/search?" + "q=" + userVal + "&api_key=dc6zaTOxFJmzC"
 
 
-    //Making call to Giphy server
-    runAjax(link);
-}
+        var link = "http://api.giphy.com/v1/gifs/search?" + "q=" + userVal + "&api_key=dc6zaTOxFJmzC"
+
+
+        //Making call to Giphy server
+        runAjax(link);
+    }
     //Reseting the input
     $("#search-value").val('');
 
@@ -72,16 +72,16 @@ $("#search").on("click", function() {
     console.log(buttons);
 });
 
-$(".buttonsContainer").on("click", "button", function(){
-	
-	var buttonVal = $(this).attr("data-name");
-  		link = "http://api.giphy.com/v1/gifs/search?" + "q=" + buttonVal + "&api_key=dc6zaTOxFJmzC"
+$(".buttonsContainer").on("click", "button", function() {
 
-	runAjax(link);
+    var buttonVal = $(this).attr("data-name");
+    link = "http://api.giphy.com/v1/gifs/search?" + "q=" + buttonVal + "&api_key=dc6zaTOxFJmzC"
+
+    runAjax(link);
 
 });
 
-$(".images").on('click', "img", function(){
-	
+$(".images").on('click', "img", function() {
+
 
 });
